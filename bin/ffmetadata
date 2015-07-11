@@ -29,14 +29,14 @@
 ######################################################################
 # Script version is yymmdd-HHMMSS in UTC, date -u +%y%m%d-%H%M%S
 ######################################################################
-SCRIPTVERSION=150711-045523
+SCRIPTVERSION=150711-051145
 
 ls -1 "${1}" \
 | while read line ; do
     if [ "x" != "x${line}" ]; then
         echo "---------- ${line} ----------"
         su urep -c sh <<EOF
-      /usr/local/bin/ffmpeg -i "${line}" -f ffmetadata -vn -an -loglevel quiet - | head
+      /usr/local/bin/ffmpeg -i "${line}" -f ffmetadata -vn -an -loglevel quiet -
 EOF
     fi
 done
