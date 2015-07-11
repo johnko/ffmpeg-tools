@@ -29,7 +29,7 @@
 ######################################################################
 # Script version is yymmdd-HHMMSS in UTC, date -u +%y%m%d-%H%M%S
 ######################################################################
-SCRIPTVERSION=150711-000811
+SCRIPTVERSION=150711-002633
 
 INPATH=/tank/dlna/ffconvertqueue
 OUTPATH=/tank/dlna/ffdone
@@ -40,7 +40,7 @@ chown -R urep ${INPATH}
 chown -R urep ${OUTPATH}
 
 nameendswithmp4() {
-    if echo "${line}" | grep '.mp4$' > /dev/null ; then
+    if echo "${line}" | grep '\.mp4$' > /dev/null ; then
         # 0 means no error, so you can do "if nameendswithmp4 ; then"
         return 0
     fi
@@ -49,7 +49,7 @@ nameendswithmp4() {
 }
 
 audioisaac() {
-    if ffprobestream | grep 'Audio: *aac .*mp4a' > /dev/null ; then
+    if ffprobestream "$1" | grep 'Audio: *aac .*mp4a' > /dev/null ; then
         # 0 means no error, so you can do "if nameendswithmp4 ; then"
         return 0
     fi
@@ -58,7 +58,7 @@ audioisaac() {
 }
 
 videoish264() {
-    if ffprobestream | grep 'Video: *h264 .*avc1' > /dev/null ; then
+    if ffprobestream "$1" | grep 'Video: *h264 .*avc1' > /dev/null ; then
         # 0 means no error, so you can do "if nameendswithmp4 ; then"
         return 0
     fi
@@ -72,7 +72,7 @@ ls -1 "${INPATH}" \
         if [ ! -e "${OUTPATH}/${line}.mp4" ]; then
             echo "${line}"
             # check if file is already .mp4, h264 and aac, if so just move it
-            if nameendswithmp4 && audioisaac && videoish264 ; then
+            if nameendswithmp4 && audioisaac "${INPATH}/${line}" && videoish264 "${INPATH}/${line}" ; then
                 #echo "Yes, file is already .mp4, h264 and aac"
                 mv "${INPATH}/${line}" "${OUTPATH}/${line}.mp4"
             else
