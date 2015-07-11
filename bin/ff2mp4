@@ -52,7 +52,7 @@ nameendswithmp4() {
 }
 
 audioisaac() {
-    if ffprobestream "$1" | grep 'Audio: *aac .*mp4a' > /dev/null ; then
+    if ffprobestream "$1" | grep 'Audio: *aac' > /dev/null ; then
         # 0 means no error, so you can do "if nameendswithmp4 ; then"
         return 0
     fi
@@ -61,7 +61,7 @@ audioisaac() {
 }
 
 videoish264() {
-    if ffprobestream "$1" | grep 'Video: *h264 .*avc1' > /dev/null ; then
+    if ffprobestream "$1" | grep 'Video: *h264' > /dev/null ; then
         # 0 means no error, so you can do "if nameendswithmp4 ; then"
         return 0
     fi
@@ -84,19 +84,19 @@ ls -1 "${INPATH}" \
                 if audioisaac "${INPATH}/${line}" && videoish264 "${INPATH}/${line}" ; then
                     echo "re-containerize in mp4"
                     su urep -c sh <<EOF
-ffmpeg -i "${INPATH}/${line}" -vcodec copy -acodec copy "${OUTPATH}/${line}.mp4"
+/usr/local/bin/ffmpeg -i "${INPATH}/${line}" -vcodec copy -acodec copy "${OUTPATH}/${line}.mp4"
 EOF
                     mv "${INPATH}/${line}" "${DONEPATH}/${line}"
                 elif audioisaac "${INPATH}/${line}" ; then
                     echo "re-encode video because audio is fine"
                     su urep -c sh <<EOF
-ffmpeg -i "${INPATH}/${line}" -acodec copy -vcodec libx264 -preset slow -profile:v baseline -level 30 -maxrate 10000000 -bufsize 10000000 -b 1200k -f mp4 -threads 0 "${OUTPATH}/${line}.mp4"
+/usr/local/bin/ffmpeg -i "${INPATH}/${line}" -acodec copy -vcodec libx264 -preset slow -profile:v baseline -level 30 -maxrate 10000000 -bufsize 10000000 -b 1200k -f mp4 -threads 0 "${OUTPATH}/${line}.mp4"
 EOF
                     mv "${INPATH}/${line}" "${DONEPATH}/${line}"
                 elif videoish264 "${INPATH}/${line}" ; then
                     echo "re-encode audio because video is fine"
                     su urep -c sh <<EOF
-ffmpeg -i "${INPATH}/${line}" -acodec aac -ac 2 -strict experimental -ab 160k -s {ssize} -vcodec copy -f mp4 -threads 0 "${OUTPATH}/${line}.mp4"
+/usr/local/bin/ffmpeg -i "${INPATH}/${line}" -acodec aac -ac 2 -strict experimental -ab 160k -s {ssize} -vcodec copy -f mp4 -threads 0 "${OUTPATH}/${line}.mp4"
 EOF
                     mv "${INPATH}/${line}" "${DONEPATH}/${line}"
                 fi
