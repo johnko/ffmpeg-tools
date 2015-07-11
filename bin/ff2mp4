@@ -29,7 +29,7 @@
 ######################################################################
 # Script version is yymmdd-HHMMSS in UTC, date -u +%y%m%d-%H%M%S
 ######################################################################
-SCRIPTVERSION=150711-045523
+SCRIPTVERSION=150711-050224
 
 INPATH=/tank/dlna/ffconvertqueue
 DONEPATH=/tank/dlna/ffdone
@@ -75,11 +75,11 @@ ls -1 "${INPATH}" \
         if [ ! -e "${OUTPATH}/${line}.mp4" ]; then
             echo "${line}"
             # check if file is already .mp4, h264 and aac, if so just move it
-            if nameendswithmp4 && audioisaac "${INPATH}/${line}" && videoish264 "${INPATH}/${line}" ; then
-                echo "file is already .mp4, h264 and aac"
-                ln "${INPATH}/${line}" "${OUTPATH}/${line}"
-                mv "${INPATH}/${line}" "${DONEPATH}/${line}"
-            else
+#            if nameendswithmp4 && audioisaac "${INPATH}/${line}" && videoish264 "${INPATH}/${line}" ; then
+#                echo "file is already .mp4, h264 and aac"
+#                ln "${INPATH}/${line}" "${OUTPATH}/${line}"
+#                mv "${INPATH}/${line}" "${DONEPATH}/${line}"
+#            else
                 #echo "No, name ends with somethin else"
                 if audioisaac "${INPATH}/${line}" && videoish264 "${INPATH}/${line}" ; then
                     echo "re-containerize in mp4"
@@ -106,7 +106,7 @@ EOF
 EOF
                     mv "${INPATH}/${line}" "${DONEPATH}/${line}"
                 fi
-            fi
+#            fi
         fi
     fi
 done
