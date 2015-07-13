@@ -29,13 +29,14 @@
 ######################################################################
 # Script version is yymmdd-HHMMSS in UTC, date -u +%y%m%d-%H%M%S
 ######################################################################
-SCRIPTVERSION=150713-004803
+SCRIPTVERSION=150713-014533
 
 if [ -d /Volumes/zzz/beet ]; then
 BEETFOLDER=/Volumes/zzz/beet
 ECHONEST=yes
 LASTGENRE=yes
 KEYFINDER=yes
+WEB=web
 tmpfile=~/.config/beets/config.yaml.tmp
 realfile=~/.config/beets/config.yaml
 
@@ -44,6 +45,7 @@ BEETFOLDER=/tank/dlna/beet
 ECHONEST=no
 LASTGENRE=no
 KEYFINDER=no
+WEB=""
 tmpfile=/usr/home/urep/.config/beets/config.yaml.tmp
 realfile=/usr/home/urep/.config/beets/config.yaml
 
@@ -60,7 +62,7 @@ library: ${BEETFOLDER}/db.blb
 asciify_paths: yes
 import:
     move: yes
-plugins: convert discogs echonest fetchart keyfinder lastgenre smartplaylist web
+plugins: convert discogs echonest fetchart keyfinder lastgenre smartplaylist ${WEB}
 lastgenre:
     auto: ${LASTGENRE}
     count: 10
