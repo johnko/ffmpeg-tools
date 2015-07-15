@@ -29,7 +29,7 @@
 ######################################################################
 # Script version is yymmdd-HHMMSS in UTC, date -u +%y%m%d-%H%M%S
 ######################################################################
-SCRIPTVERSION=150713-033552
+SCRIPTVERSION=150715-131607
 
 if [ -d /Volumes/zzz/beet ]; then
 BEETFOLDER=/Volumes/zzz/beet
@@ -128,3 +128,5 @@ beet ls -f '$genre' \
 >> ${tmpfile}
 
 mv ${tmpfile} ${realfile}
+
+chown urep ${realfile}
