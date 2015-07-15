@@ -1,0 +1,3 @@
+#!/bin/sh
+
+su -l urep -c "beet convert -y"
