@@ -1,4 +1,0 @@
-#!/bin/sh
-
-chown -R urep /tank/dlna/beetmac/music
-su -l urep -c "beet import /tank/dlna/beetmac/music"
