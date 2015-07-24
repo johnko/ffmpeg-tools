@@ -38,9 +38,9 @@ if [ "Darwin" == "${UNAME}" ]; then
     elif [ -d /Volumes/zzz/beet ]; then
         BEETFOLDER=/Volumes/zzz/beet
     fi
-    ECHONEST=yes
-    LASTGENRE=yes
-    KEYFINDER=yes
+    ECHONEST=no
+    LASTGENRE=no
+    KEYFINDER=no
     WEB=web
     tmpfile=~/.config/beets/config.yaml.tmp
     realfile=~/.config/beets/config.yaml
