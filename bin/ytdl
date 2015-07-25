@@ -29,7 +29,7 @@
 ######################################################################
 # Script version is yymmdd-HHMMSS in UTC, date -u +%y%m%d-%H%M%S
 ######################################################################
-SCRIPTVERSION=150725-061531
+SCRIPTVERSION=150725-063144
 
 install -d -m 755 -o urep /tank/dlna/ffallytdl
 
@@ -37,7 +37,7 @@ chown -R urep /tank/dlna/ffallytdl
 
 su -l urep -c "youtube-dl \
 --no-playlist --restrict-filenames -w --no-continue \
---write-description --write-info-json \
+--write-description --write-info-json -k \
 --no-cache-dir \
 -o '/tank/dlna/ffallytdl/%(uploader)s-%(title)s-%(id)s.%(ext)s' \
 '${1}'"
