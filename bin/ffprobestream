@@ -29,13 +29,13 @@
 ######################################################################
 # Script version is yymmdd-HHMMSS in UTC, date -u +%y%m%d-%H%M%S
 ######################################################################
-SCRIPTVERSION=150711-004425
+SCRIPTVERSION=150725-061357
 
 ls -1 "${1}" \
 | while read line ; do
     if [ "x" != "x${line}" ]; then
         echo "${line}"
-        su urep -c sh <<EOF
+        su -l urep -c sh <<EOF
       /usr/local/bin/ffprobe -i "${line}" 2>&1  | grep "Stream *#"
 EOF
 #echo /usr/local/bin/ffprobe -i "${line}" 2>&1 \| grep "Stream *#"
