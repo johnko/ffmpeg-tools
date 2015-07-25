@@ -29,7 +29,7 @@
 ######################################################################
 # Script version is yymmdd-HHMMSS in UTC, date -u +%y%m%d-%H%M%S
 ######################################################################
-SCRIPTVERSION=150724-054812
+SCRIPTVERSION=150725-061302
 
 UNAME=`uname`
 if [ "Darwin" == "${UNAME}" ]; then
@@ -115,16 +115,30 @@ for tag in danceability energy liveness speechiness ; do
 done
 
 # playlist per key
+beetlskey() {
+    if [ "Darwin" == "${UNAME}" ]; then
+        beet ls -f '$initial_key'
+    elif [ "FreeBSD" == "${UNAME}" ]; then
+        su -l urep -c "beet ls -f '\$initial_key'"
+    fi
+}
 
-beet ls -f '$initial_key' \
+beetlskey \
 | sort -u \
 | awk '$1~/./ {print "        - name: z_key_"$1".m3u\n          query: @initial_key:"$1"@"}' \
 | sed "s;@;';g" \
 >> ${tmpfile}
 
 # playlist per genre
+beetgenre() {
+    if [ "Darwin" == "${UNAME}" ]; then
+        beet ls -f '$genre'
+    elif [ "FreeBSD" == "${UNAME}" ]; then
+        su -l urep -c "beet ls -f '\$genre'"
+    fi
+}
 
-beet ls -f '$genre' \
+beetgenre \
 | tr ', ' '\n' \
 | sort \
 | uniq -c \
