@@ -1,0 +1,18 @@
+#!/bin/sh
+
+/usr/bin/find /tank/dlna/beet -exec chown urep {} \;
+
+/usr/bin/find /tank/dlna/ffall -type f -exec chmod a+r {} \;
+/usr/bin/find /tank/dlna/ffall -type d -exec chmod a+rx {} \;
+
+/usr/bin/find /tank/dlna/ffallytdl -type f -exec chmod a+r {} \;
+/usr/bin/find /tank/dlna/ffallytdl -type d -exec chmod a+rx {} \;
+
+/usr/bin/find /tank/dlna/movies -type f -exec chmod a+r {} \;
+/usr/bin/find /tank/dlna/movies -type d -exec chmod a+rx {} \;
+
+/usr/bin/find /tank/dlna/music -type f -exec chmod a+r {} \;
+/usr/bin/find /tank/dlna/music -type d -exec chmod a+rx {} \;
+
+/usr/bin/find /tank/dlna/photos -type f -exec chmod a+r {} \;
+/usr/bin/find /tank/dlna/photos -type d -exec chmod a+rx {} \;
