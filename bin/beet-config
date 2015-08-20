@@ -29,12 +29,12 @@
 ######################################################################
 # Script version is yymmdd-HHMMSS in UTC, date -u +%y%m%d-%H%M%S
 ######################################################################
-SCRIPTVERSION=150725-061302
+SCRIPTVERSION=150820-150908
 
 UNAME=`uname`
 if [ "Darwin" == "${UNAME}" ]; then
-    if [ -d /tank/dlna/beet ]; then
-        BEETFOLDER=/tank/dlna/beet
+    if [ -d /tank/data/beet ]; then
+        BEETFOLDER=/tank/data/beet
     elif [ -d /Volumes/zzz/beet ]; then
         BEETFOLDER=/Volumes/zzz/beet
     fi
@@ -46,8 +46,8 @@ if [ "Darwin" == "${UNAME}" ]; then
     realfile=~/.config/beets/config.yaml
     FFMPEG=ffmpeg
 elif [ "FreeBSD" == "${UNAME}" ]; then
-    if [ -d /tank/dlna/beet ]; then
-        BEETFOLDER=/tank/dlna/beet
+    if [ -d /tank/data/beet ]; then
+        BEETFOLDER=/tank/data/beet
     fi
     ECHONEST=no
     LASTGENRE=no

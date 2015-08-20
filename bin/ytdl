@@ -29,15 +29,15 @@
 ######################################################################
 # Script version is yymmdd-HHMMSS in UTC, date -u +%y%m%d-%H%M%S
 ######################################################################
-SCRIPTVERSION=150725-063144
+SCRIPTVERSION=150820-150908
 
-install -d -m 755 -o urep /tank/dlna/ffallytdl
+install -d -m 755 -o urep /tank/data/ffallytdl
 
-chown -R urep /tank/dlna/ffallytdl
+chown -R urep /tank/data/ffallytdl
 
 su -l urep -c "youtube-dl \
 --no-playlist --restrict-filenames -w --no-continue \
 --write-description --write-info-json -k \
 --no-cache-dir \
--o '/tank/dlna/ffallytdl/%(uploader)s-%(title)s-%(id)s.%(ext)s' \
+-o '/tank/data/ffallytdl/%(uploader)s-%(title)s-%(id)s.%(ext)s' \
 '${1}'"

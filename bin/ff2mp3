@@ -29,11 +29,11 @@
 ######################################################################
 # Script version is yymmdd-HHMMSS in UTC, date -u +%y%m%d-%H%M%S
 ######################################################################
-SCRIPTVERSION=150729-091223
+SCRIPTVERSION=150820-150908
 
-INPATH=/tank/dlna/ffconvertqueuemp3
-DONEPATH=/tank/dlna/ffdonemp3
-OUTPATH=/tank/dlna/ffmp3
+INPATH=/tank/data/ffconvertqueuemp3
+DONEPATH=/tank/data/ffdonemp3
+OUTPATH=/tank/data/ffmp3
 
 install -d -m 755 -o urep ${INPATH}
 install -d -m 755 -o urep ${DONEPATH}
