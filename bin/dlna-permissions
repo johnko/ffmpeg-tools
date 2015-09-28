@@ -1,18 +1,26 @@
 #!/bin/sh
 
-/usr/bin/find /tank/data/beet -exec chown urep {} \;
+# full path to bins because called from cron
 
-/usr/bin/find /tank/data/ffall -type f -exec chmod a+r {} \;
-/usr/bin/find /tank/data/ffall -type d -exec chmod a+rx {} \;
+CHOWNUREP="
+/tank/data/beet
+"
+for i in ${CHOWNUREP}; do
+    if [ "x" != "x$i" ] && [ -d $i ]; then
+        /usr/bin/find $i -exec chown urep {} \;
+    fi
+done
 
-/usr/bin/find /tank/data/ffallytdl -type f -exec chmod a+r {} \;
-/usr/bin/find /tank/data/ffallytdl -type d -exec chmod a+rx {} \;
-
-/usr/bin/find /tank/data/movies -type f -exec chmod a+r {} \;
-/usr/bin/find /tank/data/movies -type d -exec chmod a+rx {} \;
-
-/usr/bin/find /tank/data/music -type f -exec chmod a+r {} \;
-/usr/bin/find /tank/data/music -type d -exec chmod a+rx {} \;
-
-/usr/bin/find /tank/data/photos -type f -exec chmod a+r {} \;
-/usr/bin/find /tank/data/photos -type d -exec chmod a+rx {} \;
+CHMODFD="
+/tank/data/ffall
+/tank/data/ffallytdl
+/tank/data/movies
+/tank/data/music
+/tank/data/photos
+"
+for i in ${CHMODFD}; do
+    if [ "x" != "x$i" ] && [ -d $i ]; then
+        /usr/bin/find ${i} -type f -exec chmod a+r {} \;
+        /usr/bin/find ${i} -type d -exec chmod a+rx {} \;
+    fi
+done
