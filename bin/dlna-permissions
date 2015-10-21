@@ -3,7 +3,7 @@
 # full path to bins because called from cron
 
 CHOWNUREP="
-/tank/data/beet
+/priv/data/beet
 "
 for i in ${CHOWNUREP}; do
     if [ "x" != "x$i" ] && [ -d $i ]; then
@@ -12,11 +12,11 @@ for i in ${CHOWNUREP}; do
 done
 
 CHMODFD="
-/tank/data/ffall
-/tank/data/ffallytdl
-/tank/data/movies
-/tank/data/music
-/tank/data/photos
+/priv/data/ffall
+/priv/data/ffallytdl
+/priv/data/movies
+/priv/data/music
+/priv/data/photos
 "
 for i in ${CHMODFD}; do
     if [ "x" != "x$i" ] && [ -d $i ]; then

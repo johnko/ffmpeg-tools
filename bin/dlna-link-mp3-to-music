@@ -2,12 +2,7 @@
 
 # READY
 
-######################################################################
-# Script version is yymmdd-HHMMSS in UTC, date -u +%y%m%d-%H%M%S
-######################################################################
-SCRIPTVERSION=150820-150908
-
-MP3PATH=/tank/data/beet/mp3/
-MUSICPATH=/tank/data/music/
+MP3PATH=/priv/data/beet/mp3/
+MUSICPATH=/priv/data/music/
 
 rsync -virtP --link-dest=${MP3PATH}  ${MP3PATH}  ${MUSICPATH}
