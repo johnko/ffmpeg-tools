@@ -12,8 +12,7 @@ for i in ${CHOWNUREP}; do
 done
 
 CHMODFD="
-/priv/data/ffall
-/priv/data/ffallytdl
+/priv/data/ff
 /priv/data/movies
 /priv/data/music
 /priv/data/photos

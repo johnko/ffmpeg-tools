@@ -1,8 +1,8 @@
 #!/bin/sh
 
-INPATH=/priv/data/ffconvertqueue
-DONEPATH=/priv/data/ffdone
-OUTPATH=/priv/data/ffmp4
+  INPATH=/priv/data/ff/_convertqueue
+DONEPATH=/priv/data/ff/_processed
+ OUTPATH=/priv/data/ff/mp4
 
 install -d -m 755 -o urep ${INPATH}
 install -d -m 755 -o urep ${DONEPATH}
