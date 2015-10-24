@@ -1,8 +1,8 @@
 #!/bin/sh
 
-  INPATH=/priv/data/ff/_convertqueuemp3
-DONEPATH=/priv/data/ff/_processedmp3
- OUTPATH=/priv/data/ff/mp3
+  INPATH=/vault/data/ff/_convertqueuemp3
+DONEPATH=/vault/data/ff/_processedmp3
+ OUTPATH=/vault/data/ff/mp3
 
 install -d -m 755 -o urep ${INPATH}
 install -d -m 755 -o urep ${DONEPATH}

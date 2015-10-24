@@ -2,8 +2,8 @@
 
 # READY
 
-MP3PATH=/priv/data/beet/mp3/
-MUSICPATH=/priv/data/music/
+MP3PATH=/vault/data/beet/mp3/
+MUSICPATH=/vault/data/music/
 
 ## can't link if on separate zfs dataset
 # rsync -virtP --link-dest=${MP3PATH}  ${MP3PATH}  ${MUSICPATH}
