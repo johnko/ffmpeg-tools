@@ -1,9 +1,13 @@
 #!/bin/sh
 
+if [ "x" = "x$PERSONALMNT" ]; then
+    PERSONALMNT=/vault/data
+fi
+
 UNAME=`uname`
 if [ "Darwin" == "${UNAME}" ]; then
-    if [ -d /vault/data/beet ]; then
-        BEETFOLDER=/vault/data/beet
+    if [ -d ${PERSONALMNT}/beet ]; then
+        BEETFOLDER=${PERSONALMNT}/beet
     elif [ -d /Volumes/zzz/beet ]; then
         BEETFOLDER=/Volumes/zzz/beet
     fi
@@ -15,8 +19,8 @@ if [ "Darwin" == "${UNAME}" ]; then
     realfile=~/.config/beets/config.yaml
     FFMPEG=ffmpeg
 elif [ "FreeBSD" == "${UNAME}" ]; then
-    if [ -d /vault/data/beet ]; then
-        BEETFOLDER=/vault/data/beet
+    if [ -d ${PERSONALMNT}/beet ]; then
+        BEETFOLDER=${PERSONALMNT}/beet
     fi
     ECHONEST=no
     LASTGENRE=no

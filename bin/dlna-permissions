@@ -2,8 +2,12 @@
 
 # full path to bins because called from cron
 
+if [ "x" = "x$PERSONALMNT" ]; then
+    PERSONALMNT=/vault/data
+fi
+
 CHOWNUREP="
-/vault/data/beet
+${PERSONALMNT}/beet
 "
 for i in ${CHOWNUREP}; do
     if [ "x" != "x$i" ] && [ -d $i ]; then
@@ -12,10 +16,10 @@ for i in ${CHOWNUREP}; do
 done
 
 CHMODFD="
-/vault/data/ff
-/vault/data/movies
-/vault/data/music
-/vault/data/photos
+${PERSONALMNT}/ff
+${PERSONALMNT}/movies
+${PERSONALMNT}/music
+${PERSONALMNT}/photos
 "
 for i in ${CHMODFD}; do
     if [ "x" != "x$i" ] && [ -d $i ]; then

@@ -1,8 +1,12 @@
 #!/bin/sh
 
-  INPATH=/vault/data/ff/_convertqueue
-DONEPATH=/vault/data/ff/_processed
- OUTPATH=/vault/data/ff/mp4
+if [ "x" = "x$PERSONALMNT" ]; then
+    PERSONALMNT=/vault/data
+fi
+
+  INPATH=${PERSONALMNT}/ff/_convertqueue
+DONEPATH=${PERSONALMNT}/ff/_processed
+ OUTPATH=${PERSONALMNT}/ff/mp4
 
 install -d -m 755 -o urep ${INPATH}
 install -d -m 755 -o urep ${DONEPATH}
