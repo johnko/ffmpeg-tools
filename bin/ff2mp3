@@ -40,7 +40,7 @@ ls -1 "${INPATH}" \
     if [ "x" != "x${line}" ]; then
         if [ ! -e "${OUTPATH}/${line}.mp3" ]; then
             echo "${line}"
-            # check if file is already .mp4, h264 and aac, if so just move it
+            # check if file is already .mp3, and mp3, if so just move it
             if nameendswithmp3 && audioismp3 "${INPATH}/${line}" ; then
                 echo "file is already .mp3, and mp3"
                 ln "${INPATH}/${line}" "${OUTPATH}/${line}"
