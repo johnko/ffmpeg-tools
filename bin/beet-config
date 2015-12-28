@@ -21,8 +21,8 @@ if [ "Darwin" == "${UNAME}" ]; then
     realfile=~/.config/beets/config.yaml
     FFMPEG=ffmpeg
 elif [ "FreeBSD" == "${UNAME}" ]; then
-    if [ -d ${PERSONALMNT}/beet ]; then
-        BEETFOLDER=${PERSONALMNT}/beet
+    if [ -d ${PERSONALMNT}/audio ]; then
+        BEETFOLDER=${PERSONALMNT}/audio
     fi
     ECHONEST=no
     LASTGENRE=no
@@ -38,9 +38,10 @@ if [ "x" == "x${BEETFOLDER}" ]; then
 fi
 
 # generates a beets config with playlists per key and genre
+# mp3: ${FFMPEG} -i \$source -y -vn -ab 320k \$dest
 
 cat > ${tmpfile} <<EOF
-directory: ${BEETFOLDER}/music
+directory: ${BEETFOLDER}/src
 library: ${BEETFOLDER}/db.blb
 asciify_paths: yes
 import:
@@ -59,7 +60,7 @@ convert:
     dest: ${BEETFOLDER}/mp3
     format: mp3
     formats:
-        mp3: ${FFMPEG} -i \$source -y -vn -ab 320k \$dest
+        mp3: ${FFMPEG} -i \$source -y -vn -af "compand=.3 .3:1 1:-90/-60 -60/-40 -40/-30 -20/-20:6:0:-90:0.2" -c:a libmp3lame -b:a 320k -ac 2 \$dest
 smartplaylist:
     playlist_dir: ${BEETFOLDER}/playlists
     playlists:
