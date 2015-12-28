@@ -9,7 +9,8 @@ if [ "x" = "x$PERSONALMNT" ]; then
 fi
 
 CHOWNUREP="
-${PERSONALMNT}/beet
+${PERSONALMNT}/audio
+${PERSONALMNT}/video
 "
 for i in ${CHOWNUREP}; do
     if [ "x" != "x$i" ] && [ -d $i ]; then
@@ -18,10 +19,9 @@ for i in ${CHOWNUREP}; do
 done
 
 CHMODFD="
-${PERSONALMNT}/ff
-${PERSONALMNT}/movies
-${PERSONALMNT}/music
-${PERSONALMNT}/photos
+${PERSONALMNT}/audio
+${PERSONALMNT}/img
+${PERSONALMNT}/video
 "
 for i in ${CHMODFD}; do
     if [ "x" != "x$i" ] && [ -d $i ]; then
