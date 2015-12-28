@@ -8,7 +8,7 @@ ls -1 "${INPATH}" \
             if [ -e "${OUTPATH}/${line}.mp4.tmp" ]; then
                 rm "${OUTPATH}/${line}.mp4.tmp"
             fi
-            bitrate=$( /usr/local/bin/ffprobe -i "${INPATH}/${line}" 2>&1 | egrep -o 'bitrate..[0-9][0-9]*..?b/s' | awk '{print $2}' )k
+            bitrate=$( /usr/local/bin/ffprobe -ss 00:05:00 -i "${INPATH}/${line}" 2>&1 | egrep -o 'bitrate..[0-9][0-9]*..?b/s' | awk '{print $2}' )k
             echo "==  Existing bitrate: $bitrate"
             /usr/local/bin/ffmpeg -hide_banner -i "${INPATH}/${line}" -map_metadata -1 -c:v libx264 -preset fast -profile:v baseline -level 3.0 -maxrate 10000000 -bufsize 10000000 -b:v $bitrate -af "compand=0 0:1 1:-90/-900 -70/-70 -30/-9 0/-3:6:0:0:0" -strict -2 -c:a aac -b:a 256k -ac 2 -f mp4 -threads 0 "${OUTPATH}/${line}.mp4.tmp"
             if [ -e "${OUTPATH}/${line}.mp4.tmp" ]; then
