@@ -5,7 +5,7 @@ ls -1 "${1}" \
     if [ "x" != "x${line}" ]; then
         echo "---------- ${line} ----------"
         su -l urep -c sh <<EOF
-      /usr/local/bin/ffprobe -hide_banner -i "${line}" 2>&1  | grep "Stream *#"
+/usr/local/bin/ffprobe -hide_banner -i "${line}" 2>&1  | grep "Stream *#"
 EOF
 #echo /usr/local/bin/ffprobe -hide_banner -i "${line}" 2>&1 \| grep "Stream *#"
     fi
