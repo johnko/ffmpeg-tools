@@ -1,6 +1,6 @@
 #!/bin/sh
 
-ls -1 "${INPATH}" \
+find "${INPATH}" -type f -maxdepth 1 \
 | while read line ; do
     if [ "x" != "x${line}" ]; then
         if [ ! -e "${OUTPATH}/${line}.mp4" ]; then
