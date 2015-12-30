@@ -7,7 +7,7 @@ rm $TMPFILE
 find "${INPATH}" -type f -maxdepth 1 \
 | while read line ; do
     if [ "x" != "x${line}" ]; then
-        filename=$( basename $line )
+        filename=$( basename "$line" )
         if [ ! -e "${OUTPATH}/${filename}.mp4" ]; then
             echo "${filename}"
             if [ -e "${OUTPATH}/${filename}.mp4.tmp" ]; then
