@@ -8,7 +8,7 @@ find "${INPATH}" -type f -maxdepth 1 \
 | while read line ; do
     if [ "x" != "x${line}" ]; then
         filename=$( basename "$line" )
-        if [ ! -e "${OUTPATH}/${filename}.mp4" ]; then
+        if ! find "${OUTPATH}" -type f | grep "${filename}.mp4" >/dev/null 2>&1 ; then
             echo "${filename}"
             if [ -e "${OUTPATH}/${filename}.mp4.tmp" ]; then
                 rm "${OUTPATH}/${filename}.mp4.tmp"
