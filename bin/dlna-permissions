@@ -5,11 +5,12 @@
 . /usr/local/bin/loadmyvars.sh
 
 if [ "x" = "x$PERSONALMNT" ]; then
-    PERSONALMNT=/vault/data
+    PERSONALMNT=/tank
 fi
 
 CHOWNUREP="
 ${PERSONALMNT}/audio
+${PERSONALMNT}/img
 ${PERSONALMNT}/video
 "
 for i in ${CHOWNUREP}; do

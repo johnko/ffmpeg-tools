@@ -3,10 +3,10 @@
 . /usr/local/bin/loadmyvars.sh
 
 if [ "x" = "x$PERSONALMNT" ]; then
-    PERSONALMNT=/vault/data
+    PERSONALMNT=/tank
 fi
 
-YTDLSRC=${PERSONALMNT}/video/_1srcytdl
+YTDLSRC=${PERSONALMNT}/video/srcytdl
 
 install -d -m 755 -o urep ${YTDLSRC}
 

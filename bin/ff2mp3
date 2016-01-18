@@ -3,7 +3,7 @@
 . /usr/local/bin/loadmyvars.sh
 
 if [ "x" = "x$PERSONALMNT" ]; then
-    PERSONALMNT=/vault/data
+    PERSONALMNT=/tank
 fi
 
   INPATH=${PERSONALMNT}/ff/_convertqueuemp3
